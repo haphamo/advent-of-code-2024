@@ -21,11 +21,44 @@ fs.readFile('input-small-sample.txt', 'utf8', (err, data) => {
       return;
     }
     const split = data.split("\n");
-    console.log('File content:', split);
+    // Iterate
+    split.forEach(element => splitAgain(element))
+    // console.log('File content:', split);
 });
   
 // [ '19394   30201', '88523   40612' ]
-const bubbleSort = () => {
+const splitAgain = (row) => {
+    //'19394   30201'
     // Split again and trim
+    const sanitized = row.split(/\s+/);
+    // Iterate and call sort
+    sanitized.forEach(pair => console.log(sort(pair)))
+    // console.log(sanitized);
+}
 
+/**
+ * @param inputString string
+ */
+const sort = (inputString) => {
+ // Split the string into an array of numbers
+ // Convert each character to a number
+ let arr = inputString.split('').map(Number); 
+
+  // Implement Bubble Sort
+  let n = arr.length;
+  for (let i = 0; i < n - 1; i++) {
+    for (let j = 0; j < n - i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        // Swap adjacent elements
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+      }
+    }
+  }
+
+  // Return the sorted array as a string
+  return arr.join('');
+}
+
+const calculateDifference = (a, b) => {
+    // return
 }
